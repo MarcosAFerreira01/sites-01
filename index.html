@@ -258,7 +258,7 @@
             z-index: 3;
             max-width: 900px;
             text-align: center;
-            padding: 40px 20px;
+            padding: 20px 20px;
         }
 
         .hero-badge {
@@ -269,7 +269,7 @@
             border-radius: 50px;
             font-weight: 700;
             font-size: 0.95rem;
-            margin-bottom: 30px;
+            margin-bottom: 16px;
             border: 1px solid rgba(212, 175, 55, 0.4);
             letter-spacing: 1px;
             animation: pulse-badge 2s ease-in-out infinite;
@@ -281,7 +281,7 @@
             font-weight: 900;
             color: #ffffff;
             line-height: 1.1;
-            margin-bottom: 20px;
+            margin-bottom: 12px;
             letter-spacing: -2px;
             text-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
         }
@@ -298,7 +298,7 @@
         .hero-slide-subtitle {
             font-size: clamp(1rem, 4vw, 1.3rem);
             color: #e5e7eb;
-            margin-bottom: 40px;
+            margin-bottom: 16px;
             line-height: 1.6;
             text-shadow: 0 5px 15px rgba(0, 0, 0, 0.6);
             font-weight: 400;
@@ -450,22 +450,22 @@
 
         .hero-stats-bar {
             position: absolute;
-            bottom: 50px;
+            bottom: 80px;
             left: 50%;
             transform: translateX(-50%);
-            background: rgba(10, 14, 26, 0.9);
-            backdrop-filter: blur(20px);
-            border: 1.5px solid rgba(212, 175, 55, 0.3);
-            border-radius: 20px;
-            padding: 18px 32px;
+            background: rgba(10, 14, 26, 0.85);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(212, 175, 55, 0.25);
+            border-radius: 12px;
+            padding: 20px 40px;
             display: flex;
-            gap: 50px;
+            gap: 60px;
             flex-wrap: wrap;
             justify-content: center;
             align-items: center;
             z-index: 4;
             width: calc(100% - 40px);
-            max-width: 850px;
+            max-width: 900px;
         }
 
         .hero-stats-bar div {
@@ -1456,25 +1456,51 @@
                 min-height: 80vh;
             }
 
-            .hero-slide-title {
-                font-size: 2rem;
-            }
-
-            .hero-slide-subtitle {
-                font-size: 1rem;
+            .hero-slide-content {
+                padding: 12px 15px;
             }
 
             .hero-badge {
                 padding: 10px 20px;
                 font-size: 0.85rem;
+                margin-bottom: 10px;
+            }
+
+            .hero-slide-title {
+                font-size: 2rem;
+                margin-bottom: 8px;
+            }
+
+            .hero-slide-subtitle {
+                font-size: 1rem;
+                margin-bottom: 12px;
             }
 
             .hero-stats-bar {
-                flex-direction: column;
-                gap: 20px;
-                bottom: 20px;
-                padding: 20px;
-                width: calc(100% - 40px);
+                flex-direction: row;
+                gap: 12px;
+                bottom: 50px;
+                padding: 14px 16px;
+                width: calc(100% - 20px);
+                background: rgba(10, 14, 26, 0.8);
+                backdrop-filter: blur(6px);
+                border: 1px solid rgba(212, 175, 55, 0.2);
+                border-radius: 10px;
+                flex-wrap: wrap;
+                justify-content: space-around;
+            }
+
+            .hero-stats-bar div {
+                min-width: auto;
+                gap: 4px;
+            }
+
+            .hero-stats-bar strong {
+                font-size: 1rem;
+            }
+
+            .hero-stats-bar span {
+                font-size: 0.75rem;
             }
 
             .hero-button-next,
