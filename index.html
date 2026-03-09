@@ -1,0 +1,2166 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ELITE FINANCE - Educação Financeira Premium | Transforme Seu Patrimônio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-dark: #0a0e1a;
+            --secondary-dark: #1a1f35;
+            --tertiary-dark: #252d47;
+            --primary-gold: #d4af37;
+            --secondary-gold: #f4d03f;
+            --accent-purple: #8b5cf6;
+            --accent-blue: #0099ff;
+            --accent-cyan: #00d4ff;
+            --accent-green: #00ff88;
+            --danger-red: #ff3333;
+            --text-light: #ffffff;
+            --text-gray: #d1d5db;
+            --success-green: #10b981;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--primary-dark);
+            color: var(--text-light);
+            overflow-x: hidden;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* ===== TICKER TEXT ===== */
+        .ticker-container {
+            background: linear-gradient(135deg, var(--secondary-dark) 0%, var(--tertiary-dark) 100%);
+            border-bottom: 2px solid rgba(212, 175, 55, 0.3);
+            padding: 12px 0;
+            overflow: hidden;
+            position: relative;
+            z-index: 10;
+        }
+
+        .ticker-content {
+            display: flex;
+            gap: 60px;
+            animation: ticker-scroll 30s linear infinite;
+            width: fit-content;
+        }
+
+        .ticker-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            white-space: nowrap;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .ticker-item i {
+            color: var(--primary-gold);
+            font-size: 1.1rem;
+        }
+
+        .ticker-item .ticker-value {
+            color: var(--accent-green);
+            font-weight: 700;
+            font-family: 'IBM Plex Mono', monospace;
+        }
+
+        @keyframes ticker-scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(calc(-50% - 30px));
+            }
+        }
+
+        /* ===== NAVBAR ===== */
+        .navbar {
+            background: rgba(10, 14, 26, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 999;
+        }
+
+        .navbar-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--primary-gold) 0%, var(--secondary-gold) 50%, var(--accent-cyan) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 2px;
+        }
+
+        .nav-link {
+            color: var(--text-light) !important;
+            font-weight: 500;
+            margin: 0 8px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary-gold), var(--accent-cyan));
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .btn-navbar {
+            background: linear-gradient(135deg, var(--primary-gold) 0%, var(--secondary-gold) 100%);
+            color: var(--primary-dark) !important;
+            font-weight: 700;
+            border-radius: 50px;
+            padding: 8px 25px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2);
+        }
+
+        .btn-navbar:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.4);
+        }
+
+        /* ===== HERO SECTION - CAROUSEL ===== */
+        .hero {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        .hero-carousel-wrapper {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+        }
+
+        .hero-swiper {
+            width: 100%;
+            height: 100%;
+        }
+
+        .hero-slide {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-slide-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            z-index: 1;
+        }
+
+        .hero-slide-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(10, 14, 26, 0.7) 0%, rgba(37, 45, 71, 0.5) 50%, rgba(10, 14, 26, 0.7) 100%);
+            z-index: 2;
+        }
+
+        .hero-slide-content {
+            position: relative;
+            z-index: 3;
+            max-width: 900px;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.3) 0%, rgba(212, 175, 55, 0.1) 100%);
+            color: var(--primary-gold);
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            margin-bottom: 30px;
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            letter-spacing: 1px;
+            animation: pulse-badge 2s ease-in-out infinite;
+        }
+
+        .hero-slide-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 10vw, 5.5rem);
+            font-weight: 900;
+            color: #ffffff;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            letter-spacing: -2px;
+            text-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+        }
+
+        .hero-slide-title .gradient-text {
+            background: linear-gradient(135deg, var(--primary-gold) 0%, var(--accent-cyan) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: glow-intense 3s ease-in-out infinite;
+            filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.5));
+        }
+
+        .hero-slide-subtitle {
+            font-size: clamp(1rem, 4vw, 1.3rem);
+            color: #e5e7eb;
+            margin-bottom: 40px;
+            line-height: 1.6;
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.6);
+            font-weight: 400;
+        }
+
+        .hero-slide-cta {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .hero-stats-bar {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(10, 14, 26, 0.9);
+            backdrop-filter: blur(20px);
+            border: 1.5px solid rgba(212, 175, 55, 0.3);
+            border-radius: 20px;
+            padding: 25px 40px;
+            display: flex;
+            gap: 50px;
+            flex-wrap: wrap;
+            justify-content: center;
+            z-index: 4;
+            width: calc(100% - 40px);
+            max-width: 800px;
+        }
+
+        .hero-stats-bar div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .hero-stats-bar strong {
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .hero-stats-bar span {
+            font-size: 0.85rem;
+            color: #d1d5db;
+            font-weight: 400;
+        }
+
+        /* Hero Swiper Navigation */
+        .hero-button-next,
+        .hero-button-prev {
+            width: 60px;
+            height: 60px;
+            background: rgba(212, 175, 55, 0.2) !important;
+            border: 2px solid rgba(212, 175, 55, 0.5);
+            border-radius: 50%;
+            z-index: 5;
+            transition: all 0.3s ease;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .hero-button-next:hover,
+        .hero-button-prev:hover {
+            background: rgba(212, 175, 55, 0.4) !important;
+            border-color: var(--primary-gold);
+        }
+
+        .hero-button-next::after,
+        .hero-button-prev::after {
+            font-size: 1.2rem !important;
+            color: var(--primary-gold);
+            font-weight: 700;
+        }
+
+        .hero-button-next {
+            right: 30px;
+        }
+
+        .hero-button-prev {
+            left: 30px;
+        }
+
+        .hero-pagination {
+            bottom: 100px;
+            z-index: 5;
+        }
+
+        .hero-pagination .swiper-pagination-bullet {
+            background: rgba(212, 175, 55, 0.4);
+            opacity: 1;
+            width: 12px;
+            height: 12px;
+        }
+
+        .hero-pagination .swiper-pagination-bullet-active {
+            background: var(--primary-gold);
+            width: 30px;
+            border-radius: 10px;
+        }
+
+        /* ===== BENEFITS SECTION ===== */
+        .benefits-section {
+            padding: 100px 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .benefit-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            border: 1.5px solid rgba(212, 175, 55, 0.3);
+            padding: 40px;
+            border-radius: 20px;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .benefit-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            transition: all 0.4s ease;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-20px);
+            border-color: var(--primary-gold);
+            background: rgba(212, 175, 55, 0.12);
+        }
+
+        .benefit-card:hover::before {
+            right: -30%;
+            top: -30%;
+        }
+
+        .benefit-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary-gold), var(--secondary-gold));
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: var(--primary-dark);
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .benefit-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .benefit-card p {
+            color: #e0e5f0;
+            line-height: 1.7;
+            position: relative;
+            z-index: 2;
+            font-weight: 400;
+        }
+
+        /* ===== TICKER HORIZONTAL ===== */
+        .ticker-horizontal {
+            background: linear-gradient(90deg, var(--accent-purple) 0%, var(--accent-blue) 50%, var(--accent-cyan) 100%);
+            padding: 20px;
+            color: white;
+            text-align: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+            animation: pulse-bg 3s ease-in-out infinite;
+            margin: 80px 0;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(139, 92, 246, 0.3);
+        }
+
+        .ticker-horizontal-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .ticker-horizontal-content i {
+            animation: bounce 1s ease-in-out infinite;
+        }
+
+        @keyframes pulse-bg {
+            0%, 100% {
+                box-shadow: 0 10px 40px rgba(139, 92, 246, 0.3);
+            }
+            50% {
+                box-shadow: 0 10px 60px rgba(139, 92, 246, 0.6);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-5px);
+            }
+        }
+
+        /* ===== SECTION TITLE ===== */
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 900;
+            margin-bottom: 20px;
+            line-height: 1.1;
+            text-align: center;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: #e5e7eb;
+            margin-bottom: 50px;
+            line-height: 1.7;
+            font-weight: 400;
+            text-align: center;
+        }
+
+        /* ===== COURSES CAROUSEL ===== */
+        .courses-section {
+            padding: 80px 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .courses-section .section-title {
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .courses-section .section-subtitle {
+            margin-bottom: 60px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+
+        .swiper {
+            padding: 20px 0;
+        }
+
+        .course-card {
+            background: rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            border-radius: 28px;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        }
+
+        .course-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 0px;
+            background: transparent;
+            z-index: 10;
+        }
+
+        .course-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% -10%, rgba(212, 175, 55, 0.08), transparent 50%);
+            opacity: 0;
+            transition: opacity 0.6s ease;
+            pointer-events: none;
+        }
+
+        @keyframes slide-gradient {
+            0%, 100% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        .course-card:hover {
+            transform: translateY(-12px);
+            border-color: rgba(212, 175, 55, 0.5);
+            box-shadow: 0 25px 65px rgba(212, 175, 55, 0.12);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .course-card:hover::after {
+            opacity: 0;
+        }
+
+        .course-card-featured {
+            transform: scale(1.05);
+            border-color: rgba(212, 175, 55, 0.5);
+            background: rgba(212, 175, 55, 0.08);
+            box-shadow: 0 15px 50px rgba(212, 175, 55, 0.15);
+        }
+
+        .course-card-featured:hover {
+            transform: scale(1.08) translateY(-12px);
+            border-color: rgba(212, 175, 55, 0.6);
+            box-shadow: 0 30px 75px rgba(212, 175, 55, 0.18);
+        }
+
+        .course-image {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+            position: relative;
+            display: block;
+        }
+
+        .course-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(180deg, rgba(10, 14, 26, 0) 0%, rgba(10, 14, 26, 0.3) 100%);
+        }
+
+        .course-card:hover .course-image {
+            transform: scale(1.08);
+        }
+
+        .course-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, rgba(255, 0, 0, 0.8), rgba(255, 50, 50, 0.9));
+            color: white;
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 0.7rem;
+            z-index: 3;
+            letter-spacing: 0.8px;
+            box-shadow: 0 5px 15px rgba(255, 0, 0, 0.2);
+            text-transform: uppercase;
+        }
+
+        .course-badge.badge-featured {
+            background: var(--primary-gold);
+            color: var(--primary-dark);
+            font-weight: 900;
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            animation: none;
+        }
+
+        @keyframes pulse-badge {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        .course-content {
+            padding: 32px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .course-level {
+            color: var(--primary-gold);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 14px;
+            font-weight: 900;
+            opacity: 0.95;
+            text-align: center;
+        }
+
+        .course-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.52rem;
+            margin-bottom: 16px;
+            font-weight: 900;
+            line-height: 1.35;
+            color: #ffffff;
+            text-align: center;
+            letter-spacing: -0.8px;
+        }
+
+        .course-description {
+            color: #e0e5f0;
+            font-size: 0.92rem;
+            line-height: 1.7;
+            margin-bottom: 22px;
+            flex-grow: 1;
+            font-weight: 400;
+            text-align: center;
+            letter-spacing: 0.2px;
+        }
+
+        .course-features {
+            list-style: none;
+            margin-bottom: 28px;
+            width: 100%;
+            padding: 0;
+        }
+
+        .course-features li {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 12px;
+            margin-bottom: 14px;
+            font-size: 0.88rem;
+            color: #e0e5f0;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+            line-height: 1.4;
+        }
+
+        .course-features i {
+            color: var(--accent-green);
+            font-size: 1.2rem;
+            flex-shrink: 0;
+            min-width: 20px;
+            text-align: center;
+        }
+        
+
+        .course-footer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding-top: 22px;
+            border-top: 1.5px solid rgba(212, 175, 55, 0.3);
+            gap: 28px;
+            width: 100%;
+        }
+
+        .course-price {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--primary-gold), #ffed4e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -1.5px;
+            text-shadow: 0 2px 10px rgba(212, 175, 55, 0.2);
+        }
+
+        .course-btn {
+            background: linear-gradient(135deg, var(--primary-gold) 0%, #ffed4e 100%);
+            color: var(--primary-dark);
+            border: none;
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-weight: 900;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+            font-size: 0.82rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .course-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.4) 0%, transparent 70%);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+            pointer-events: none;
+        }
+
+        .course-btn::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                transparent 30%,
+                rgba(255, 255, 255, 0.1) 50%,
+                transparent 70%
+            );
+            transform: rotate(45deg);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+        }
+
+        .course-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(212, 175, 55, 0.55), 
+                        0 0px 30px rgba(255, 237, 74, 0.4),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.6);
+            background: linear-gradient(135deg, #ffed4e 0%, var(--primary-gold) 100%);
+        }
+
+        .course-btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .course-btn:hover::after {
+            opacity: 1;
+            animation: shimmer-light 0.6s ease-in-out;
+        }
+
+        @keyframes shimmer-light {
+            0% {
+                transform: translate(-100%, -100%) rotate(45deg);
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                transform: translate(100%, 100%) rotate(45deg);
+                opacity: 0;
+            }
+        }
+
+        /* ===== TESTIMONIALS ===== */
+        .testimonials-section {
+            padding: 100px 20px;
+            background: linear-gradient(135deg, rgba(10, 14, 26, 0.5) 0%, rgba(37, 45, 71, 0.5) 100%);
+            position: relative;
+            z-index: 2;
+            margin: 80px 0;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            border: 1.5px solid rgba(212, 175, 55, 0.3);
+            padding: 35px;
+            border-radius: 20px;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-15px);
+            border-color: var(--accent-green);
+            background: rgba(16, 185, 129, 0.08);
+        }
+
+        .testimonial-stars {
+            color: var(--primary-gold);
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+
+        .testimonial-text {
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            font-style: italic;
+            color: var(--text-light);
+        }
+
+        .testimonial-author {
+            font-weight: 700;
+            color: var(--primary-gold);
+            margin-bottom: 8px;
+        }
+
+        .testimonial-role {
+            color: #d1d5db;
+            font-size: 0.85rem;
+            font-weight: 400;
+        }
+
+        /* ===== PRICING ===== */
+        .pricing-section {
+            padding: 100px 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .pricing-plans {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .pricing-card {
+            background: rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            border-radius: 20px;
+            padding: 40px;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pricing-card.featured {
+            transform: scale(1.08);
+            border-color: var(--primary-gold);
+            background: rgba(212, 175, 55, 0.12);
+            box-shadow: 0 20px 60px rgba(212, 175, 55, 0.25);
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            border-color: var(--primary-gold);
+            box-shadow: 0 30px 80px rgba(212, 175, 55, 0.2);
+        }
+
+        .pricing-card.featured:hover {
+            transform: scale(1.1) translateY(-10px);
+        }
+
+        .pricing-badge {
+            position: absolute;
+            top: 20px;
+            right: -30px;
+            background: var(--primary-gold);
+            color: var(--primary-dark);
+            padding: 8px 40px;
+            font-weight: 900;
+            transform: rotate(45deg);
+            font-size: 0.85rem;
+        }
+
+        .pricing-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            font-weight: 800;
+        }
+
+        .pricing-price {
+            font-size: 3rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--primary-gold), var(--accent-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+
+        .pricing-currency {
+            font-size: 1.2rem;
+        }
+
+        .pricing-period {
+            color: #d1d5db;
+            font-size: 0.9rem;
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 35px;
+        }
+
+        .pricing-features li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 15px;
+            color: #ffffff;
+            font-size: 0.95rem;
+            font-weight: 400;
+        }
+
+        .pricing-features i {
+            color: var(--accent-green);
+            font-size: 1.1rem;
+            min-width: 20px;
+        }
+
+        .pricing-btn {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 50px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .pricing-btn-primary {
+            background: linear-gradient(135deg, var(--primary-gold), var(--secondary-gold));
+            color: var(--primary-dark);
+        }
+
+        .pricing-btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.3);
+        }
+
+        .pricing-btn-secondary {
+            background: transparent;
+            border: 2px solid var(--primary-gold);
+            color: var(--primary-gold);
+        }
+
+        .pricing-btn-secondary:hover {
+            background: var(--primary-gold);
+            color: var(--primary-dark);
+            transform: translateY(-3px);
+        }
+
+        /* ===== PROFESSORS SECTION ===== */
+        .professors-section {
+            padding: 100px 20px;
+            position: relative;
+            z-index: 2;
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .professor-swiper {
+            padding: 40px 0;
+        }
+
+        .professor-card {
+            position: relative;
+            height: 400px;
+            border-radius: 20px;
+            overflow: hidden;
+            display: flex;
+            align-items: flex-end;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+        }
+
+        .professor-card:hover {
+            transform: translateY(-20px);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+        }
+
+        .professor-card img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+            transition: transform 0.4s ease;
+        }
+
+        .professor-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .professor-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .professor-badge {
+            background: rgba(255, 255, 255, 0.95);
+            color: var(--primary-dark);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            backdrop-filter: blur(10px);
+        }
+
+        .professor-info {
+            background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.95) 20%, rgba(0, 0, 0, 0.98) 100%);
+            width: 100%;
+            padding: 40px 20px 25px;
+            text-align: center;
+            z-index: 3;
+        }
+
+        .professor-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 8px;
+        }
+
+        .professor-specialization {
+            color: var(--primary-gold);
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .professor-card-1 {
+            background: linear-gradient(135deg, #0d6f45 0%, #1a4d31 100%);
+        }
+
+        .professor-card-2 {
+            background: linear-gradient(135deg, #ff0080 0%, #7928ca 50%, #1e90ff 100%);
+        }
+
+        .professor-card-3 {
+            background: linear-gradient(135deg, #1a1a2e 0%, #3d3d5c 100%);
+        }
+
+        .professor-card-4 {
+            background: linear-gradient(135deg, #6b0080 0%, #3d0066 100%);
+        }
+
+        .professor-card-5 {
+            background: linear-gradient(135deg, #0f3f5f 0%, #1e5a7a 50%, #2d7a9a 100%);
+        }
+        .faq-section {
+            padding: 100px 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .accordion-button {
+            background: rgba(255, 255, 255, 0.06) !important;
+            border: 1.5px solid rgba(212, 175, 55, 0.3) !important;
+            color: #1a1f35 !important;
+            font-weight: 700;
+            font-size: 1.05rem;
+            padding: 20px;
+            border-radius: 15px !important;
+            margin-bottom: 15px;
+            letter-spacing: 0.3px;
+            transition: all 0.3s ease;
+        }
+
+        .accordion-button:not(.collapsed) {
+            background: rgba(212, 175, 55, 0.2) !important;
+            border-color: var(--primary-gold) !important;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.15) !important;
+            color: #0a0e1a !important;
+        }
+
+        .accordion-button:focus {
+            box-shadow: none;
+            border-color: var(--primary-gold) !important;
+        }
+
+        .accordion-body {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-top: none;
+            color: #2d3748;
+            padding: 25px 20px;
+            border-radius: 0 0 15px 15px;
+            font-weight: 400;
+            line-height: 1.8;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: linear-gradient(135deg, var(--secondary-dark) 0%, var(--tertiary-dark) 100%);
+            border-top: 2px solid rgba(212, 175, 55, 0.2);
+            padding: 60px 20px 30px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 20px;
+            color: var(--primary-gold);
+            font-weight: 800;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col li {
+            margin-bottom: 12px;
+        }
+
+        .footer-col a {
+            color: #d1d5db;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: 400;
+        }
+
+        .footer-col a:hover {
+            color: var(--primary-gold);
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            padding-top: 30px;
+            text-align: center;
+            color: #d1d5db;
+            font-weight: 400;
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes glow-intense {
+            0%, 100% {
+                text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+            }
+            50% {
+                text-shadow: 0 0 40px rgba(212, 175, 55, 0.8), 0 0 60px rgba(0, 255, 136, 0.4);
+            }
+        }
+
+        @keyframes float-smooth {
+            0%, 100% {
+                transform: translateY(0) translateX(0);
+            }
+            50% {
+                transform: translateY(-30px) translateX(20px);
+            }
+        }
+
+        /* ===== PARALLAX ===== */
+        .parallax-container {
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .hero {
+                min-height: 80vh;
+            }
+
+            .hero-slide {
+                min-height: 80vh;
+            }
+
+            .hero-slide-title {
+                font-size: 2rem;
+            }
+
+            .hero-slide-subtitle {
+                font-size: 1rem;
+            }
+
+            .hero-badge {
+                padding: 10px 20px;
+                font-size: 0.85rem;
+            }
+
+            .hero-stats-bar {
+                flex-direction: column;
+                gap: 20px;
+                bottom: 20px;
+                padding: 20px;
+                width: calc(100% - 40px);
+            }
+
+            .hero-button-next,
+            .hero-button-prev {
+                width: 45px;
+                height: 45px;
+                display: none;
+            }
+
+            .hero-pagination {
+                bottom: 80px;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .pricing-card.featured {
+                transform: scale(1);
+            }
+
+            .pricing-card.featured:hover {
+                transform: scale(1.05) translateY(-10px);
+            }
+
+            .benefits-section, .courses-section, .testimonials-section, .pricing-section, .faq-section {
+                padding: 60px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- TICKER -->
+    <div class="ticker-container">
+        <div class="ticker-content">
+            <div class="ticker-item"><i class="fas fa-chart-line"></i> <span class="ticker-value">+3.200 alunos</span> transformaram suas finanças</div>
+            <div class="ticker-item"><i class="fas fa-star"></i> Avaliação média <span class="ticker-value">4.9★</span></div>
+            <div class="ticker-item"><i class="fas fa-fire"></i> <span class="ticker-value">Vagas limitadas</span> para turma de Março</div>
+            <div class="ticker-item"><i class="fas fa-trophy"></i> <span class="ticker-value">Retorno médio</span> de 180% ao ano</div>
+            <div class="ticker-item"><i class="fas fa-clock"></i> Apenas <span class="ticker-value">9 horas</span> de conteúdo estruturado</div>
+            <div class="ticker-item"><i class="fas fa-chart-line"></i> <span class="ticker-value">+3.200 alunos</span> transformaram suas finanças</div>
+            <div class="ticker-item"><i class="fas fa-star"></i> Avaliação média <span class="ticker-value">4.9★</span></div>
+            <div class="ticker-item"><i class="fas fa-fire"></i> <span class="ticker-value">Vagas limitadas</span> para turma de Março</div>
+        </div>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-lg">
+            <a class="navbar-brand" href="#home">ELITE FINANCE</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#benefits">Benefícios</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#courses">Cursos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#pricing">Preços</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#testimonials">Depoimentos</a></li>
+                    <li class="nav-item"><a class="nav-link btn btn-navbar ms-2" href="#cta">Começar Agora</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION CAROUSEL -->
+    <section class="hero" id="home">
+        <div class="hero-carousel-wrapper">
+            <div class="swiper hero-swiper">
+                <div class="swiper-wrapper">
+                    <!-- Slide 1 -->
+                    <div class="swiper-slide hero-slide">
+                        <div class="hero-slide-bg" style="background-image: url('https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1400&q=80');"></div>
+                        <div class="hero-slide-overlay"></div>
+                        <div class="hero-slide-content">
+                            <div class="hero-badge">✓ RECONHECIDO PELO MERCADO</div>
+                            <h1 class="hero-slide-title">Transforme R$ 1.000 em R$ <span class="gradient-text">50.000</span></h1>
+                            <p class="hero-slide-subtitle">Em 12 meses com estratégias comprovadas</p>
+                            <div class="hero-slide-cta">
+                                <a href="#" class="btn-primary-cta" style="font-size: 1.1rem; padding: 18px 45px;">
+                                    <i class="fas fa-lock-open me-2"></i> Entrar na Turma Agora
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 2 -->
+                    <div class="swiper-slide hero-slide">
+                        <div class="hero-slide-bg" style="background-image: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=1400&q=80');"></div>
+                        <div class="hero-slide-overlay"></div>
+                        <div class="hero-slide-content">
+                            <div class="hero-badge">3.200+ ALUNOS TRANSFORMADOS</div>
+                            <h1 class="hero-slide-title">Sem Fake, Sem <span class="gradient-text">Especulação</span></h1>
+                            <p class="hero-slide-subtitle">Apenas estratégias comprovadas que geram resultados reais</p>
+                            <div class="hero-slide-cta">
+                                <a href="#courses" class="btn-primary-cta" style="font-size: 1.1rem; padding: 18px 45px;">
+                                    <i class="fas fa-bolt me-2"></i> Ver Planos
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 3 -->
+                    <div class="swiper-slide hero-slide">
+                        <div class="hero-slide-bg" style="background-image: url('imagem01.jpg');"></div>
+                        <div class="hero-slide-overlay"></div>
+                        <div class="hero-slide-content">
+                            <div class="hero-badge">95% TAXA DE SUCESSO</div>
+                            <h1 class="hero-slide-title">Ganhe R$ 7 mil por <span class="gradient-text">mês</span></h1>
+                            <p class="hero-slide-subtitle">Com a metodologia que funciona de verdade</p>
+                            <div class="hero-slide-cta">
+                                <a href="#" class="btn-primary-cta" style="font-size: 1.1rem; padding: 18px 45px;">
+                                    <i class="fas fa-rocket me-2"></i> Começar Hoje
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation -->
+                <div class="swiper-button-next hero-button-next"></div>
+                <div class="swiper-button-prev hero-button-prev"></div>
+                <div class="swiper-pagination hero-pagination"></div>
+            </div>
+
+            <!-- Stats bar (fixed on carousel) -->
+            <div class="hero-stats-bar">
+                <div><strong style="color: var(--accent-green);">4.9★</strong> <span>Avaliação de 580+ alunos</span></div>
+                <div><strong style="color: var(--primary-gold);">95%</strong> <span>Taxa de sucesso</span></div>
+                <div><i class="fas fa-shield-alt" style="color: var(--accent-green); margin-right: 8px;"></i> <span>Garantia de 15 dias</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROFESSORS SECTION -->
+    <section class="professors-section">
+        <div class="container-lg">
+            <div style="text-align: center; margin-bottom: 60px;">
+                <h2 class="section-title" style="color: var(--danger-red);">Os melhores especialistas do Brasil</h2>
+                <p class="section-subtitle">Tenha acesso ao conhecimento dos maiores investidores e aprenda com as maiores referências do mercado financeiro.</p>
+            </div>
+
+            <div class="swiper professor-swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="professor-card professor-card-1">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&h=600&q=80" alt="Professor 1">
+                            <div class="professor-overlay">
+                                <div class="professor-badge">ESPECIALISTA</div>
+                            </div>
+                            <div class="professor-info">
+                                <div class="professor-name">JOÃO SILVA</div>
+                                <div class="professor-specialization">Investimentos • 15 anos experiência</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="professor-card professor-card-2">
+                            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&h=600&q=80" alt="Professor 2">
+                            <div class="professor-overlay">
+                                <div class="professor-badge">ESTRATEGISTA</div>
+                            </div>
+                            <div class="professor-info">
+                                <div class="professor-name">PEDRO NEVES</div>
+                                <div class="professor-specialization">Renda Passiva • 12 anos experiência</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="professor-card professor-card-3">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&h=600&q=80" alt="Professor 3">
+                            <div class="professor-overlay">
+                                <div class="professor-badge">MENTOR</div>
+                            </div>
+                            <div class="professor-info">
+                                <div class="professor-name">CARLOS SANTOS</div>
+                                <div class="professor-specialization">Mercado Imobiliário • 18 anos</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="professor-card professor-card-4">
+                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&h=600&q=80" alt="Professor 4">
+                            <div class="professor-overlay">
+                                <div class="professor-badge">FUNDADORA</div>
+                            </div>
+                            <div class="professor-info">
+                                <div class="professor-name">MARINA COSTA</div>
+                                <div class="professor-specialization">E-commerce • 14 anos experiência</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="professor-card professor-card-5">
+                            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&h=600&q=80" alt="Professor 5">
+                            <div class="professor-overlay">
+                                <div class="professor-badge">CONSULTOR</div>
+                            </div>
+                            <div class="professor-info">
+                                <div class="professor-name">LUCAS OLIVEIRA</div>
+                                <div class="professor-specialization">IA & Negócios • 10 anos</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BENEFITS SECTION -->
+    <section class="benefits-section" id="benefits">
+        <div class="container-lg">
+            <h2 class="section-title">Tudo que você precisa para <span class="gradient-text">começar hoje</span></h2>
+            <p class="section-subtitle">Sistema completo validado por 3.200+ alunos que já transformaram suas finanças</p>
+
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon"><i class="fas fa-rocket"></i></div>
+                    <h3>Primeiros Resultados em 30 dias</h3>
+                    <p>Estrutura pronta para implementar. Não é teoria. Seus alunos já ganham dinheiro logo na primeira semana.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h3>Estratégias 100% Seguras</h3>
+                    <p>Sem especulação, sem risco absurdo. Método aprovado por profissionais CVM com histórico de 95% de sucesso.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon"><i class="fas fa-clock"></i></div>
+                    <h3>Apenas 9 Horas de Conteúdo</h3>
+                    <p>Sem enrolação. Apenas informação valiosa que você realmente precisa saber para gerar resultado imediato.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon"><i class="fas fa-users"></i></div>
+                    <h3>Comunidade Exclusiva</h3>
+                    <p>Conecte-se com pessoas que pensam igual. Networking com investidores que crescem juntos na comunidade VIP.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon"><i class="fas fa-headset"></i></div>
+                    <h3>Suporte 24/7 Dedicado</h3>
+                    <p>Dúvidas? WhatsApp especialista. Chat com mentores. Atendimento diferenciado para cada aluno do programa.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon"><i class="fas fa-check-double"></i></div>
+                    <h3>Garantia Total de 15 Dias</h3>
+                    <p>Não gostou? 100% de reembolso sem perguntas incômodas. Sua satisfação é a nossa prioridade número 1.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TICKER HORIZONTAL -->
+    <div class="ticker-horizontal">
+        <div class="ticker-horizontal-content">
+            <i class="fas fa-exclamation-triangle"></i>
+            <strong>⏰ PROMOÇÃO RELÂMPAGO:</strong> Apenas 5 vagas disponíveis ao preço de lançamento! Garanta sua entrada agora mesmo.
+        </div>
+    </div>
+
+    <!-- COURSES CAROUSEL SECTION -->
+    <section class="courses-section" id="courses">
+        <div class="container-lg">
+            <h2 class="section-title">Cursos de <span class="gradient-text">Fundamentos</span></h2>
+            <p class="section-subtitle">Programas premium desenhados para transformar sua vida financeira com estratégias comprovadas</p>
+
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <!-- COURSE 1 -->
+                    <div class="swiper-slide">
+                        <div class="course-card">
+                            <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Fundamentos" class="course-image">
+                            <div class="course-badge">Iniciante</div>
+                            <div class="course-content">
+                                <div class="course-level">Para começar do zero</div>
+                                <h3 class="course-title">Fundamentos Financeiros</h3>
+                                <p class="course-description">Domine os conceitos essenciais para iniciar sua jornada de investimento com confiança e segurança.</p>
+                                <ul class="course-features">
+                                    <li><i class="fas fa-check-circle"></i> 5 módulos principais</li>
+                                    <li><i class="fas fa-check-circle"></i> 3 horas de vídeo HD</li>
+                                    <li><i class="fas fa-check-circle"></i> Acesso vitalício</li>
+                                </ul>
+                                <div class="course-footer">
+                                    <div class="course-price">R$ 97</div>
+                                    <button class="course-btn">Começar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- COURSE 2 -->
+                    <div class="swiper-slide">
+                        <div class="course-card course-card-featured">
+                            <img src="imagem 02.webp" alt="Investimento" class="course-image">
+                            <div class="course-badge badge-featured">⭐ Mais Popular</div>
+                            <div class="course-content">
+                                <div class="course-level" style="color: var(--accent-green);">Para criar renda passiva</div>
+                                <h3 class="course-title">Investimento Estratégico</h3>
+                                <p class="course-description">Métodos comprovados para gerar renda passiva consistente e construir patrimônio real.</p>
+                                <ul class="course-features">
+                                    <li><i class="fas fa-check-circle"></i> 12 módulos avançados</li>
+                                    <li><i class="fas fa-check-circle"></i> 9 horas de vídeo 4K</li>
+                                    <li><i class="fas fa-check-circle"></i> Grupo VIP exclusivo</li>
+                                </ul>
+                                <div class="course-footer">
+                                    <div class="course-price">R$ 297</div>
+                                    <button class="course-btn">Aproveitar Oferta</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- COURSE 3 -->
+                    <div class="swiper-slide">
+                        <div class="course-card">
+                            <img src="imagem 03.jpg" alt="Mentoría" class="course-image">
+                            <div class="course-badge">Premium</div>
+                            <div class="course-content">
+                                <div class="course-level">Para acelerar resultados</div>
+                                <h3 class="course-title">Mentoría Completa +</h3>
+                                <p class="course-description">Acelerador premium com mentoria 1:1, análise de portfólio e suporte vitalício dedicado.</p>
+                                <ul class="course-features">
+                                    <li><i class="fas fa-check-circle"></i> TUDO acima + mais conteúdo</li>
+                                    <li><i class="fas fa-check-circle"></i> Mentoria 1:1 mensal</li>
+                                    <li><i class="fas fa-check-circle"></i> Suporte VIP lifetime</li>
+                                </ul>
+                                <div class="course-footer">
+                                    <div class="course-price">R$ 1.997</div>
+                                    <button class="course-btn">Começar Mentoría</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS SECTION -->
+    <section class="testimonials-section" id="testimonials">
+        <div class="container-lg">
+            <h2 class="section-title">Resultados reais de <span class="gradient-text">alunos</span></h2>
+            <p class="section-subtitle">Histórias de transformação financeira que já começaram</p>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"Saí do zero a ganhar R$ 2 mil por mês em apenas 3 meses. Agora meu dinheiro trabalha para mim enquanto durmo."</p>
+                    <div class="testimonial-author">João Alves</div>
+                    <div class="testimonial-role">São Paulo, SP</div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"Consegui pagar uma dívida de R$ 18 mil em 5 meses seguindo o método. Senti uma transformação real em minha vida."</p>
+                    <div class="testimonial-author">Marina Rodrigues</div>
+                    <div class="testimonial-role">Rio de Janeiro, RJ</div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"Fiz meu primeiro investimento em 2 semanas. Os resultados foram tão bons que já criei um portfólio de R$ 50 mil."</p>
+                    <div class="testimonial-author">Carlos Mendes</div>
+                    <div class="testimonial-role">Belo Horizonte, MG</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRICING SECTION -->
+    <section class="pricing-section" id="pricing">
+        <div class="container-lg">
+            <h2 class="section-title">Investimento acessível, <span class="gradient-text">retorno infinito</span></h2>
+            <p class="section-subtitle">Escolha seu plano agora. Apenas 5 vagas disponíveis ao preço de lançamento.</p>
+
+            <div class="pricing-plans">
+                <div class="pricing-card">
+                    <h3 class="pricing-name">Iniciante</h3>
+                    <div class="pricing-price"><span class="pricing-currency">R$</span> 97</div>
+                    <p class="pricing-period">Pagamento único • Acesso para sempre</p>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> 5 módulos essenciais</li>
+                        <li><i class="fas fa-check"></i> 3 horas de vídeo 4K</li>
+                        <li><i class="fas fa-check"></i> Material de apoio</li>
+                        <li><i class="fas fa-check"></i> Certificado digital</li>
+                        <li style="opacity: 0.5;"><i class="fas fa-times"></i> Mentoría personalizada</li>
+                    </ul>
+                    <button class="pricing-btn pricing-btn-secondary">Começar Agora</button>
+                    <p style="text-align: center; margin-top: 15px; font-size: 0.85rem; color: #d1d5db;">Melhor para começar do zero</p>
+                </div>
+
+                <div class="pricing-card featured">
+                    <div class="pricing-badge">⭐ TOP PROCURADO</div>
+                    <h3 class="pricing-name">Estratégico</h3>
+                    <div class="pricing-price"><span class="pricing-currency">R$</span> 297</div>
+                    <p class="pricing-period">ou 12x de R$ 29,50 s/ juros</p>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> 12 módulos completos</li>
+                        <li><i class="fas fa-check"></i> 9 horas de vídeo 4K</li>
+                        <li><i class="fas fa-check"></i> Comunidade VIP privada</li>
+                        <li><i class="fas fa-check"></i> 4 sessões ao vivo/mês</li>
+                        <li><i class="fas fa-check"></i> Suporte por WhatsApp</li>
+                    </ul>
+                    <button class="pricing-btn pricing-btn-primary">Aproveitar Agora</button>
+                    <p style="text-align: center; margin-top: 15px; font-size: 0.85rem; color: #d1d5db;">Maioria dos alunos escolhe este</p>
+                </div>
+
+                <div class="pricing-card">
+                    <div class="pricing-badge">👑 VIP</div>
+                    <h3 class="pricing-name">Mentoría VIP</h3>
+                    <div class="pricing-price"><span class="pricing-currency">R$</span> 1.997</div>
+                    <p class="pricing-period">ou 12x de R$ 166,42 s/ juros</p>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Tudo do Estratégico</li>
+                        <li><i class="fas fa-check"></i> Mentoría 1:1 mensal</li>
+                        <li><i class="fas fa-check"></i> Análise de portfólio</li>
+                        <li><i class="fas fa-check"></i> Plano financeiro personalizado</li>
+                        <li><i class="fas fa-check"></i> Suporte VIP lifetime</li>
+                    </ul>
+                    <button class="pricing-btn pricing-btn-secondary">Virar VIP Agora</button>
+                    <p style="text-align: center; margin-top: 15px; font-size: 0.85rem; color: #d1d5db;">Máximo retorno possível</p>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 60px; padding: 30px; background: rgba(212, 175, 55, 0.1); border-radius: 15px; border: 1px solid rgba(212, 175, 55, 0.3);">
+                <p style="color: var(--text-light); margin-bottom: 15px; font-size: 0.95rem;">✓ 15 dias de garantia total • ✓ Acesso imediato • ✓ Suporte diferenciado</p>
+                <p style="color: #d1d5db; margin: 0; font-size: 0.85rem;">Oferta válida apenas até o fim deste mês. Após isso, preços aumentam 50%.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section class="faq-section" id="faq">
+        <div class="container-lg">
+            <h2 class="section-title">Dúvidas <span class="gradient-text">Frequentes</span></h2>
+            <p class="section-subtitle">Respostas para as perguntas mais comuns</p>
+
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="accordion" id="faqAccordion">
+                        <div class="accordion-item border-0">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                    Preciso de experiência anterior para começar?
+                                </button>
+                            </h2>
+                            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Não! Nosso programa é desenvolvido do zero. Começamos com os conceitos mais básicos e evoluímos para estratégias avançadas. Se você nunca investiu, esse é o lugar certo.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item border-0">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                    Quanto tempo leva para ver os primeiros resultados?
+                                </button>
+                            </h2>
+                            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Muitos alunos fazem seu primeiro investimento ainda na primeira semana. Os retornos iniciais começam em 2-4 semanas. Resultados significativos em 30-90 dias.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item border-0">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                    Preciso investir muito dinheiro para começar?
+                                </button>
+                            </h2>
+                            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Não! As estratégias funcionam com qualquer valor. Você pode começar com R$ 100, R$ 500 ou R$ 1.000. O importante é começar e manter a consistência.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item border-0">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                                    Qual é garantia de satisfação?
+                                </button>
+                            </h2>
+                            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Você tem 15 dias de garantia 100% reembolsável. Se não gostar, devolvemos cada centavo. Sem perguntas, sem burocracias. Sua satisfação é nossa prioridade.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item border-0">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
+                                    Terei acesso vitalício ao conteúdo?
+                                </button>
+                            </h2>
+                            <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Sim! Uma vez que você se inscreve, tem acesso permanente a todo o material. Ainda ganha atualizações e novos conteúdos sem custo adicional.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FINAL CTA SECTION -->
+    <section style="padding: 100px 20px; background: linear-gradient(135deg, var(--secondary-dark) 0%, var(--tertiary-dark) 100%); text-align: center; position: relative; z-index: 2;" id="cta">
+        <div class="container-lg">
+            <div style="margin-bottom: 30px; display: inline-block; background: rgba(255, 51, 51, 0.15); padding: 12px 30px; border-radius: 50px; border: 2px solid rgba(255, 51, 51, 0.3);">
+                <i class="fas fa-fire" style="color: var(--danger-red); margin-right: 8px;"></i>
+                <strong style="color: var(--danger-red);">APENAS 5 VAGAS DISPONÍVEIS HOJE</strong>
+            </div>
+            <h2 class="section-title" style="margin-bottom: 20px;">Não deixe para <span class="gradient-text">amanhã</span> o que vai mudar sua vida hoje</h2>
+            <p class="section-subtitle" style="margin-bottom: 40px;">3.200+ pessoas já começaram sua jornada. Será que você quer ficar de fora?</p>
+            <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                <a href="#pricing" class="btn-primary-cta" style="font-size: 1.1rem; padding: 18px 50px;">
+                    <i class="fas fa-arrow-right me-2"></i> Escolher Meu Plano
+                </a>
+                <a href="https://wa.me/5511999999999" class="btn-secondary-cta" style="font-size: 1rem; padding: 15px 40px;">
+                    <i class="fab fa-whatsapp me-2"></i> Falar com Especialista
+                </a>
+            </div>
+            <p style="color: #d1d5db; margin-top: 40px; font-size: 0.9rem;">
+                <i class="fas fa-check-circle" style="color: var(--accent-green); margin-right: 8px;"></i> 15 dias de garantia total
+                <span style="margin: 0 15px;">•</span>
+                <i class="fas fa-lock" style="color: var(--accent-green); margin-right: 8px;"></i> Pagamento seguro
+                <span style="margin: 0 15px;">•</span>
+                <i class="fas fa-clock" style="color: var(--accent-green); margin-right: 8px;"></i> Acesso imediato
+            </p>
+            <p style="color: var(--danger-red); margin-top: 25px; font-size: 0.85rem; font-weight: 700;">
+                ⚠️ Oferta válida apenas até fim deste mês. Após isso, preços aumentam 50%.
+            </p>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container-lg">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h4>ELITE FINANCE</h4>
+                    <p>Educação financeira premium para pessoas extraordinárias que querem conquistar liberdade financeira.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Menu</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#benefits">Benefícios</a></li>
+                        <li><a href="#courses">Cursos</a></li>
+                        <li><a href="#pricing">Preços</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Suporte</h4>
+                    <ul>
+                        <li><a href="#">Política de Privacidade</a></li>
+                        <li><a href="#">Termos de Uso</a></li>
+                        <li><a href="#">Entre em Contato</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contato</h4>
+                    <p><strong>Email:</strong> contato@elitefinance.com</p>
+                    <p><strong>WhatsApp:</strong> (11) 99999-9999</p>
+                    <p><strong>CNPJ:</strong> 00.000.000/0001-00</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 ELITE FINANCE. Todos os direitos reservados. | Desenvolvido com <i class="fas fa-heart" style="color: var(--primary-gold);"></i> para educação financeira</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WHATSAPP FLOAT -->
+    <a href="https://wa.me/5511999999999" target="_blank" style="
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 60px;
+        height: 60px;
+        background: linear-gradient(135deg, var(--accent-green), #00b838);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 1.8rem;
+        box-shadow: 0 10px 40px rgba(0, 255, 136, 0.3);
+        z-index: 1000;
+        transition: all 0.3s ease;
+        animation: pulse-float 2s ease-in-out infinite;
+    " onmouseover="this.style.transform='scale(1.1)'; this.style.boxShadow='0 15px 50px rgba(0, 255, 136, 0.5)';" 
+    onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 40px rgba(0, 255, 136, 0.3)';">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <style>
+        @keyframes pulse-float {
+            0%, 100% {
+                transform: translateY(0) scale(1);
+            }
+            50% {
+                transform: translateY(-10px) scale(1);
+            }
+        }
+    </style>
+
+    <!-- SCRIPTS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <script>
+        // PARALLAX EFFECT
+        document.addEventListener('mousemove', (e) => {
+            const parallaxElements = document.querySelectorAll('[class*="parallax"]');
+            const xPosition = (window.innerWidth / 2 - e.pageX) / 50;
+            const yPosition = (window.innerHeight / 2 - e.pageY) / 50;
+            
+            parallaxElements.forEach(el => {
+                if (el.querySelector('.hero-image')) {
+                    el.querySelector('.hero-image').style.transform = `translate(${xPosition * 0.5}px, ${yPosition * 0.5}px) scale(1)`;
+                }
+            });
+        });
+
+        // SCROLL PARALLAX
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallaxBg = document.querySelector('.hero::before');
+            
+            if (parallaxBg) {
+                document.querySelector('.hero').style.backgroundPosition = `0% ${scrolled * 0.5}px`;
+            }
+        });
+
+        // HERO IMAGE PARALLAX
+        const heroImage = document.querySelector('.hero-image');
+        if (heroImage) {
+            window.addEventListener('scroll', () => {
+                const scrolled = window.pageYOffset;
+                const elementOffset = heroImage.offsetTop;
+                const parallaxAmount = (scrolled - elementOffset) * 0.3;
+                heroImage.style.transform = `translateY(${parallaxAmount}px)`;
+            });
+        }
+
+        // SWIPER INITIALIZATION
+        const swiper = new Swiper('.mySwiper', {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+                dynamicBullets: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            breakpoints: {
+                768: {
+                    slidesPerView: 2,
+                    spaceBetween: 20,
+                },
+                1024: {
+                    slidesPerView: 3,
+                    spaceBetween: 30,
+                }
+            }
+        });
+
+        // COURSE CARD MOUSE SHADOW EFFECT
+        const courseCards = document.querySelectorAll('.course-card');
+        
+        courseCards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const deltaX = x - centerX;
+                const deltaY = y - centerY;
+                
+                const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+                const angle = Math.atan2(deltaY, deltaX);
+                
+                // Calculate shadow offset based on mouse position - increased sensitivity
+                const shadowOffsetX = Math.cos(angle) * Math.min(distance / 5, 90);
+                const shadowOffsetY = Math.sin(angle) * Math.min(distance / 5, 90);
+                
+                // Create dynamic shadow with reduced area but increased movement
+                const shadowColor = 'rgba(212, 175, 55, 0.3)';
+                const shadowColor2 = 'rgba(255, 237, 74, 0.18)';
+                const shadowColor3 = 'rgba(212, 175, 55, 0.12)';
+                
+                card.style.boxShadow = `
+                    ${shadowOffsetX * 2.5}px ${shadowOffsetY * 2.5}px 50px ${shadowColor},
+                    ${shadowOffsetX * 1.8}px ${shadowOffsetY * 1.8}px 32px ${shadowColor2},
+                    ${shadowOffsetX * 1}px ${shadowOffsetY * 1}px 18px ${shadowColor3},
+                    0 8px 24px rgba(0, 0, 0, 0.2)
+                `;
+            });
+            
+            card.addEventListener('mouseleave', (e) => {
+                // Reset to default shadow
+                card.style.boxShadow = '0 8px 24px rgba(0, 0, 0, 0.2)';
+            });
+        });
+
+        // HERO CAROUSEL INITIALIZATION
+        const heroSwiper = new Swiper('.hero-swiper', {
+            slidesPerView: 1,
+            spaceBetween: 0,
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.hero-pagination',
+                clickable: true,
+                dynamicBullets: true,
+            },
+            navigation: {
+                nextEl: '.hero-button-next',
+                prevEl: '.hero-button-prev',
+            },
+            effect: 'fade',
+            fadeEffect: {
+                crossFade: true
+            },
+            speed: 1000,
+        });
+
+        // PROFESSOR SWIPER INITIALIZATION
+        const professorSwiper = new Swiper('.professor-swiper', {
+            slidesPerView: 1,
+            spaceBetween: 25,
+            pagination: {
+                el: '.professor-swiper .swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.professor-swiper .swiper-button-next',
+                prevEl: '.professor-swiper .swiper-button-prev',
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 2,
+                    spaceBetween: 20,
+                },
+                1024: {
+                    slidesPerView: 5,
+                    spaceBetween: 25,
+                }
+            }
+        });
+
+        // TICKER ANIMATION
+        const tickerContent = document.querySelector('.ticker-content');
+        if (tickerContent) {
+            const scrollWidth = tickerContent.scrollWidth;
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes ticker-scroll {
+                    0% {
+                        transform: translateX(0);
+                    }
+                    100% {
+                        transform: translateX(calc(-${scrollWidth / 2}px));
+                    }
+                }
+            `;
+            document.head.appendChild(style);
+        }
+
+        // SMOOTH SCROLL
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // COUNTER ANIMATION
+        const animateCounters = () => {
+            const counters = document.querySelectorAll('.stat-number');
+            counters.forEach(counter => {
+                const target = counter.innerText;
+                const isPercentage = target.includes('%');
+                const numValue = parseInt(target.replace(/[^0-9]/g, ''));
+                
+                let current = 0;
+                const increment = numValue / 50;
+                
+                const updateCounter = () => {
+                    if (current < numValue) {
+                        current += increment;
+                        counter.innerText = isPercentage 
+                            ? Math.floor(current) + '%'
+                            : Math.floor(current) + '+';
+                        setTimeout(updateCounter, 30);
+                    }
+                };
+                
+                updateCounter();
+            });
+        };
+
+        // Trigger counter animation when section is visible
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && entry.target.classList.contains('hero-stats')) {
+                    animateCounters();
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        const heroStats = document.querySelector('.hero-stats');
+        if (heroStats) observer.observe(heroStats);
+
+        // NAVBAR BACKGROUND ON SCROLL
+        const navbar = document.querySelector('.navbar');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 50) {
+                navbar.style.borderBottomColor = 'rgba(212, 175, 55, 0.4)';
+                navbar.style.backdropFilter = 'blur(30px)';
+            } else {
+                navbar.style.borderBottomColor = 'rgba(212, 175, 55, 0.2)';
+                navbar.style.backdropFilter = 'blur(20px)';
+            }
+        });
+
+        // FADE IN ANIMATION
+        const fadeInElements = document.querySelectorAll('.benefit-card, .course-card, .testimonial-card, .pricing-card');
+        const fadeInObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.6s ease forwards';
+                    fadeInObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        fadeInElements.forEach(el => fadeInObserver.observe(el));
+
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeInUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(30px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
